@@ -10,7 +10,7 @@ import com.example.roomexample.data.Schedule
 interface ScheduleDao {
 
     @Query("SELECT * FROM schedule")
-    fun getAllSchedule(): ArrayList<Schedule>
+    fun getAllSchedule(): List<Schedule>
 
     @Insert
     fun insertSchedule(vararg schedules: Schedule)

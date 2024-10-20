@@ -23,31 +23,40 @@ import java.time.YearMonth
 class MainComposable(private val viewModel: MainViewModel) {
 
     @Composable
-    fun Greeting(name:String , modifier: Modifier) {
+    fun Greeting() {
+        /** 가장 상위 뷰 **/
+        /** Column 속성을 이용해 뷰를 세로로 배치 **/
+        Column(
 
-        Text(
-            text = "Hello $name!",
-            modifier = modifier
-        )
+            modifier = Modifier.fillMaxSize(),
 
-        // 상단 (이전 날짜 버튼 , 현재 날짜 , 다음 날짜 버튼)
-        MainTitle(
+            // 컴포넌트들이 위에서부터 순차적으로 배치
+            verticalArrangement = Arrangement.Top
 
-            currentMonth = viewModel.currentMonth.value,
+        ) {
 
-            onPreviousMonth = {
+            // 상단 (이전 날짜 버튼 , 현재 날짜 , 다음 날짜 버튼)
+            MainTitle(
 
-                viewModel.currentMonth.value = viewModel.currentMonth.value.minusMonths(1)
-                viewModel.selectedDay.value = null
+                currentMonth = viewModel.currentMonth.value,
 
-            } ,
+                onPreviousMonth = {
 
-            onNextMonth =  {
-                viewModel.currentMonth.value = viewModel.currentMonth.value.plusMonths(1)
-                viewModel.selectedDay.value = null // 날짜 변경 시 선택된 날짜 초기화
-            }
+                    viewModel.currentMonth.value = viewModel.currentMonth.value.minusMonths(1)
+                    viewModel.selectedDay.value = null
 
-        )
+                } ,
+
+                onNextMonth =  {
+                    viewModel.currentMonth.value = viewModel.currentMonth.value.plusMonths(1)
+                    viewModel.selectedDay.value = null // 날짜 변경 시 선택된 날짜 초기화
+                }
+
+            )
+
+            // 메인
+
+        }
 
     }
 

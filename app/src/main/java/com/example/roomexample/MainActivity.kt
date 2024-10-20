@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    mainComposable.Greeting("Android",modifier = Modifier)
+                    mainComposable.Greeting()
 
                 }
 
@@ -54,7 +54,7 @@ fun GreetingPreview() {
 
     RoomExampleTheme {
 
-        mainComposable.Greeting(name = "Android", modifier = Modifier)
+        mainComposable.Greeting()
 
     }
 
